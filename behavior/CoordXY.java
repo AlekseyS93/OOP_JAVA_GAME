@@ -1,5 +1,10 @@
 package behavior;
 
+import person.PersonBase;
+
+/**
+ * Класс для позиционирования персонажей
+ */
 public class CoordXY {
     private int curX;
     private int curY;

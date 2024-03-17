@@ -1,6 +1,9 @@
 package person;
 
+import behavior.ActionInterface;
 import behavior.CoordXY;
+
+import java.util.ArrayList;
 
 /**
  * Абстрактный класс Пехота, в данном случае база для Разбойников и Копейщиков,
@@ -28,9 +31,9 @@ public abstract class InfantryBase extends PersonBase {
         level = 1;
     }
 
+
     @Override
-    public void action()
-    {
+    public void step(ArrayList<PersonBase> enemies) {
 
     }
 
