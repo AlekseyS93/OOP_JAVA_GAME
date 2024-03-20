@@ -19,21 +19,17 @@ public class Main {
 //        all.sort(new PrioritySort());
         all.sort((o1, o2) -> Integer.compare(o2.priority, o1.priority));
 
-        for (PersonBase p : all)
-        {
-            System.out.print(p + " ходит. ");
-            if (red.contains(p))
-            {
-//                if (p.getClass().getSimpleName().equals("Wizard"))
-//                {
-//                    ...
-//                }
-                p.step(blue);
+        for (int i = 0; i < 10; i++) {
+            for (PersonBase p : all) {
+                System.out.print(p + " ходит. ");
+                if (red.contains(p)) {
+                    p.step(blue, red);
 
-            } else {
-                p.step(red);
+                } else {
+                    p.step(red, blue);
+                }
+                System.out.println();
             }
-            System.out.println();
         }
 
     }
