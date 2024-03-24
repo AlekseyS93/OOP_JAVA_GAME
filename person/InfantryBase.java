@@ -72,12 +72,12 @@ public abstract class InfantryBase extends PersonBase {
             return;
 
         position.increment(px[minIdx], py[minIdx]);
-        System.out.println(name + ": перемещается на (" + position.getX() + ", " + position.getY() + ")");
+
+        history = "move to " + position;
     }
 
     private void attack(PersonBase target, boolean isMoved)
     {
-        System.out.print(name + ": бьёт " + target);
         int damage = getRound(power, 10) + (power / 10) * level;
         boolean critical = (this.agility/3) >= rnd.nextInt(100);
         if (critical)
@@ -88,24 +88,13 @@ public abstract class InfantryBase extends PersonBase {
             damage /= 2;                        // удар с хода
 
         int res = target.getDamage(damage);
-        if (res > 0)
-        {
-            if (critical)
-                System.out.print(" и наносит критический удар в " + res + " повреждений!");
-            else
-                System.out.print(" и наносит " + res + " повреждений.");
-        } else {
-            System.out.print(", но " + target.name + " увернулся!");
-        }
-        if (target.health <= 0)
-        {
-            System.out.print("\n" + target + " вышел из чата!");
-        }
+        history = history + "attack " + target.name + " set " + res + "damage";
     }
 
     @Override
     public void step(ArrayList<PersonBase> enemies, ArrayList<PersonBase> friends)
     {
+        history = "";
         PersonBase target = this.findNearestPerson(enemies);
         if (health <= 0 || target == null)
             return;
