@@ -21,7 +21,7 @@ public class View {
 
         if (dif > 0)
             System.out.printf("%" + dif + "s", " ");
-        System.out.print(":\t");
+        System.out.print(": ");
     }
 
     private static String formatDiv(String str) {
@@ -45,13 +45,13 @@ public class View {
             CoordXY pos = human.getPosition();
             if (pos.getX() == x && pos.getY() == y)
             {
-                if (human.getHealth() == 0)
+                if (human.getHealth() <= 0)
                 {
-                    out = "│" + (AnsyView.ANSI_RED + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
+                    out = "│" + (AnsyView.ANSI_RED + human.getInfo().charAt(1) + AnsyView.ANSI_RESET);
                     break;
                 }
-                if (Main.greenPersons.contains(human)) out = "│" + (AnsyView.ANSI_GREEN + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
-                if (Main.bluePersons.contains(human)) out = "│" + (AnsyView.ANSI_BLUE + human.getInfo().charAt(0) + AnsyView.ANSI_RESET);
+                if (Main.greenPersons.contains(human)) out = "│" + (AnsyView.ANSI_GREEN + human.getInfo().charAt(1) + AnsyView.ANSI_RESET);
+                if (Main.bluePersons.contains(human)) out = "│" + (AnsyView.ANSI_BLUE + human.getInfo().charAt(1) + AnsyView.ANSI_RESET);
                 break;
             }
         }
